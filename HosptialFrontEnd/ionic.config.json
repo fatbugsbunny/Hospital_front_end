@@ -1,0 +1,7 @@
+{
+  "name": "HosptialFrontEnd",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
