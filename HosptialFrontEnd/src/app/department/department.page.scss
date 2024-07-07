@@ -1,0 +1,9 @@
+ion-grid ion-row {
+  border: 1px solid #ccc; /* Border for the row */
+}
+
+ion-grid ion-row ion-col {
+  border: 1px solid #ccc; /* Border for the column */
+  text-align: center;
+  padding: 8px; /* Adjust padding as needed */
+}
