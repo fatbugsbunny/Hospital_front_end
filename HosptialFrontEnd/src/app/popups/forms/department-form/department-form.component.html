@@ -1,0 +1,12 @@
+<ion-content >
+    <form [formGroup]="addDepartmentForm" (submit)="editDepartment()">
+      <ion-label  position="floating">Department code</ion-label>
+      <ion-input formControlName="code"></ion-input>
+
+      <ion-label position="floating">Department name</ion-label>
+      <ion-input formControlName="name"></ion-input>
+
+      <ion-button expand="full" type="submit" [disabled]="addDepartmentForm.invalid">Edit department</ion-button>
+    </form>
+  <ion-button expand="full" (click)="dismiss()">Close</ion-button>
+</ion-content>

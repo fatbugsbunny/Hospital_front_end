@@ -3,7 +3,21 @@ ion-grid ion-row {
 }
 
 ion-grid ion-row ion-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #ccc; /* Border for the column */
-  text-align: center;
   padding: 8px; /* Adjust padding as needed */
+}
+
+ion-content::part(scroll) {
+  padding-top: var(--ion-safe-area-top, 0);
+}
+
+ion-content::part(scroll) {
+  padding-left: var(--ion-safe-area-left, 0);
+}
+
+#grid{
+  margin-top: 113px;
 }
