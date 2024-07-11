@@ -35,3 +35,10 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+.deleteDepartmentPopUp .modal-wrapper {
+  --width: 20%;  /* Adjust the width as needed */
+  --height: 20%; /* Adjust the height as needed */
+  --max-width: 100px; /* Adjust the max-width as needed */
+  --max-height: 30%; /* Adjust the max-height as needed */
+}

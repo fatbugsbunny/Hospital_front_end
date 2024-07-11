@@ -13,7 +13,14 @@ import {
 import {DepartmentService} from "../services/department.service";
 import {Department} from "../types";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {DepartmentFormComponent} from "../popups/forms/department-form/department-form.component";
+import {EditDepartmentFormComponent} from "../popups/department-popups/forms/edit-department-form/edit-department-form.component";
+import {
+  DeleteDepartmentPopupComponent
+} from "../popups/department-popups/delete-department-popup/delete-department-popup.component";
+import {
+  AddDepartmentFormComponent
+} from "../popups/department-popups/forms/add-department-form/add-department-form.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-department',
@@ -26,20 +33,39 @@ export class DepartmentPage implements OnInit{
   data!: Department[];
   departments: Department[] = [];
 
-  constructor(public modalController: ModalController, private departmentService: DepartmentService) {}
+  constructor(public modalController: ModalController,  private router: Router
+, private departmentService: DepartmentService) {}
 
   ngOnInit(){
     this.departmentService.getAllDepartments().subscribe(departments => {this.data = departments; this.departments = departments});
   }
 
-  async openModal(department: Department){
+  async openEditDepartmentForm(department: Department){
     const modal = await this.modalController.create({
-      component: DepartmentFormComponent,
+      component: EditDepartmentFormComponent,
+      cssClass: 'deleteDepartmentPopUp',
       componentProps: {
-        department
+        department,
       }
     });
     return await modal.present();
+  }
+
+  async openDeleteDepartmentPopup(id: number){
+    const modal = await this.modalController.create({
+      component: DeleteDepartmentPopupComponent,
+      componentProps:{
+        id
+      }
+    });
+    return await modal.present();
+  }
+
+  async openAddDepartmentForm(){
+    const modal = await this.modalController.create({
+      component: AddDepartmentFormComponent
+    });
+    return await modal.present()
   }
 
   // @ts-ignore

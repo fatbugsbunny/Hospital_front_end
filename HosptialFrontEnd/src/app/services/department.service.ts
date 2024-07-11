@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {catchError, Observable, throwError} from "rxjs";
 import {Department, Options, Patient} from "../types";
 
 @Injectable({
@@ -16,18 +16,20 @@ export class DepartmentService {
     return this.httpClient.get<Department[]>(`${this.apiUrl}/all`);
   }
 
-  addDepartment(department: Department): void {
-    this.httpClient.post<Department>(`${this.apiUrl}/add`, department);
+  addDepartment(department: Department): Observable<any> {
+   return this.httpClient.post<Department>(`${this.apiUrl}/add`, department);
   }
 
-  editDepartment(id: number, department: Department): void {
-    this.httpClient.put<Department>(`${this.apiUrl}/${id}`, {
+  editDepartment(id: number, department: Department): Observable<any> {
+    return this.httpClient.put<Department>(`${this.apiUrl}/${id}`, {
       code: department.code,
       name: department.name
-    }).subscribe();
+    })
   }
 
-  deleteDepartment(id: number): void {
-    this.httpClient.delete(`${this.apiUrl}/${id}`);
+
+  deleteDepartment(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.apiUrl}/${id}`);
   }
+
 }

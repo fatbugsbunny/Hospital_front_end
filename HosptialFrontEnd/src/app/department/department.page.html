@@ -1,6 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Search for a department</ion-title>
+    <ion-title class="ion-float-left">Search for a department</ion-title>
+    <ion-button class="ion-float-right ion-padding-horizontal" fill="outline" size="small" (click)="openAddDepartmentForm()">Add Department</ion-button>
   </ion-toolbar>
   <ion-toolbar>
     <ion-searchbar (ionInput)="handleInput($event)"></ion-searchbar>
@@ -20,8 +21,8 @@
       <ion-col>{{department.id}}</ion-col>
       <ion-col>{{department.name}}</ion-col>
       <ion-col>{{department.code}}</ion-col>
-      <ion-col><ion-button color="success" (click)="openModal(department)">Edit</ion-button></ion-col>
-      <ion-col><ion-button color="danger" (click)="">Delete</ion-button></ion-col>
+      <ion-col><ion-button color="primary" (click)="openEditDepartmentForm(department)">Edit</ion-button></ion-col>
+      <ion-col><ion-button color="danger" (click)="openDeleteDepartmentPopup(department.id!)">Delete</ion-button></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

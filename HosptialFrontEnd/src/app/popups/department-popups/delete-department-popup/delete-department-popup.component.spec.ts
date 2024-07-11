@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { DepartmentFormComponent } from './department-form.component';
+import { DeleteDepartmentPopupComponent } from './delete-department-popup.component';
 
-describe('DepartmentFormComponent', () => {
-  let component: DepartmentFormComponent;
-  let fixture: ComponentFixture<DepartmentFormComponent>;
+describe('DeleteDepartmentFormComponent', () => {
+  let component: DeleteDepartmentPopupComponent;
+  let fixture: ComponentFixture<DeleteDepartmentPopupComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ DepartmentFormComponent ],
+      declarations: [ DeleteDepartmentPopupComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DepartmentFormComponent);
+    fixture = TestBed.createComponent(DeleteDepartmentPopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
