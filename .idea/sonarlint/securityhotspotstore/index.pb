@@ -1,11 +1,61 @@
 
 L
 HosptialFrontEnd/src/main.ts,f\2\f281bf943d63efa9b08b7a6e30fcf242dfad2702
-Z
-*HosptialFrontEnd/src/app/home/home.page.ts,2\1\217d8083bbc9b660cde7089a436a7d24325c56c2
-\
-,HosptialFrontEnd/src/app/home/home.page.html,4\a\4aaaec1fc19956b1e652c95196c770a03bbefa0c
 [
 +HosptialFrontEnd/src/app/app.component.html,a\6\a61322acdc82f4ecab82780b71ece32ff90589e8
 Y
 )HosptialFrontEnd/src/app/app.component.ts,3\0\3067740232c04418ee0fa8f066702b337ff779e9
+Q
+!HosptialFrontEnd/src/app/types.ts,f\5\f578250fcd028b7e77bf555c14477cdd85b58bf5
+g
+7HosptialFrontEnd/src/app/services/department.service.ts,5\b\5b16421c24110a5e49b7eb63db2f67926011dadb
+V
+&HosptialFrontEnd/src/app/app.routes.ts,d\7\d7f11b17eace52c7998ab3c7b232aa1b0fed6e80
+h
+8HosptialFrontEnd/src/app/department/department.page.html,2\1\21246e302bb1877f91a3a7e10d2368d71c3e6d56
+f
+6HosptialFrontEnd/src/app/department/department.page.ts,d\7\d78a221fae9b218de35e986d6b54ce5c390870be
+h
+8HosptialFrontEnd/src/app/department/department.page.scss,f\e\fe9ba89848b4b7d3ef53084a27d2d3465b4277aa
+O
+HosptialFrontEnd/src/index.html,6\5\65ad85879e054a2f7d4d4b8131fa1eb09b4602f4
+ž
+nHosptialFrontEnd/src/app/popups/department-popups/delete-department-popup/delete-department-popup.component.ts,8\9\89b593a9c5f1162a9fd743ce40a9ec572a376ae7
+ž
+nHosptialFrontEnd/src/app/popups/department-popups/forms/edit-department-form/edit-department-form.component.ts,4\4\44a5a76922f4870c25bed9518e4e45d38f2b4d35
+ 
+pHosptialFrontEnd/src/app/popups/department-popups/forms/edit-department-form/edit-department-form.component.html,d\e\de9ff4a239ae0b4bb67761514203906ba7e4fc24
+ 
+pHosptialFrontEnd/src/app/popups/department-popups/delete-department-popup/delete-department-popup.component.html,d\4\d45a4ef9e2980d172390294aed0baa0be3c8b032
+£
+sHosptialFrontEnd/src/app/popups/department-popups/delete-department-popup/delete-department-popup.component.spec.ts,d\0\d0c407dd25a89f1b74ada8be76d3d5f9ad7bc174
+ 
+pHosptialFrontEnd/src/app/popups/department-popups/delete-department-popup/delete-department-popup.component.scss,e\d\edcd823dc824b1534460e7e56750417f3c45ad7d
+ 
+pHosptialFrontEnd/src/app/popups/department-popups/forms/edit-department-form/edit-department-form.component.scss,7\d\7d3e6512fb7fa704d4e53cf13385906dbdddf55a
+P
+ HosptialFrontEnd/src/global.scss,f\9\f994cbd90af276a375e1c0c84982f1fdef89a941
+X
+(HosptialFrontEnd/src/app/ModalHandler.ts,5\1\518bfc0b8e2edb660cd33a1281fce2de84e4205f
+œ
+lHosptialFrontEnd/src/app/popups/department-popups/forms/add-department-form/add-department-form.component.ts,c\a\caea6f05bd4360cb87c476a24a1012e7463ba6ae
+ž
+nHosptialFrontEnd/src/app/popups/department-popups/forms/add-department-form/add-department-form.component.html,9\0\90c75e00253d43a912ee80cc96413acfdd900949
+`
+0HosptialFrontEnd/src/app/patient/patient.page.ts,1\3\13d1e8961db6ce324a60473d447f35c9615ba989
+b
+2HosptialFrontEnd/src/app/patient/patient.page.html,4\f\4f00a194d50dce49c3bbb2845735b722e964b5b0
+d
+4HosptialFrontEnd/src/app/services/patient.service.ts,4\2\420582f9b5c8d9c3525dc427f7a961317df03c20
+b
+2HosptialFrontEnd/src/app/patient/patient.page.scss,e\7\e7272b469b06ace176e5a3969e4153760f48b136
+„
+THosptialFrontEnd/src/app/popups/error-handle-popup/error-handle-popup.component.scss,1\e\1e8e7a249aabbfbe4992b3834d7914ef5799215a
+“
+cHosptialFrontEnd/src/app/popups/patient-popups/forms/add-patient-form/add-patient-form.component.ts,e\c\ecc383af71c16936bfe0d9e1c950b27508163e6c
+•
+eHosptialFrontEnd/src/app/popups/patient-popups/forms/add-patient-form/add-patient-form.component.html,a\4\a4c11f649a53ba60b759d1e483a8473db4c03cb5
+„
+THosptialFrontEnd/src/app/popups/error-handle-popup/error-handle-popup.component.html,5\a\5afeee3f201a4a39464bd167a861f30174df2271
+‚
+RHosptialFrontEnd/src/app/popups/error-handle-popup/error-handle-popup.component.ts,d\6\d6ffbc2054996dcf75677f9a51ef8b4c8205a1e9

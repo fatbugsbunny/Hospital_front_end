@@ -1,4 +1,4 @@
-import {ErrorHandlePopupComponent} from "./popups/after-action-popup/error-handle-popup.component";
+import {ErrorHandlePopupComponent} from "./popups/error-handle-popup/error-handle-popup.component";
 import {ModalController} from "@ionic/angular/standalone";
 import {HttpErrorResponse} from "@angular/common/http";
 

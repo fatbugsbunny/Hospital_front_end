@@ -1,0 +1,31 @@
+<ion-content>
+  <form (submit)="addPatient()" [formGroup]="patientForm" >
+    <ion-label>Name</ion-label>
+    <ion-input type="text" formControlName="name"></ion-input>
+
+    <ion-label>Last name</ion-label>
+    <ion-input type="text" formControlName="lastName"></ion-input>
+
+    <ion-label>Birthday</ion-label>
+    <ion-input type="date" formControlName="birthDate"></ion-input>
+
+    <ion-label>Department</ion-label>
+    <ion-select [formControl]="department">
+      <ion-select-option *ngFor="let department of departments" [value]="department.id">{{department.name}}</ion-select-option>
+    </ion-select>
+
+    <div [formGroup]="admissionStateForm">
+        <ion-label>Cause</ion-label>
+        <ion-input type="text" formControlName="cause"></ion-input>
+
+        <ion-label>Reason</ion-label>
+        <ion-input type="text" formControlName="reason"></ion-input>
+
+        <ion-label>Clinical data</ion-label>
+        <ion-input type="text" formControlName="clinicalData"></ion-input>
+    </div>
+    <ion-button expand="full" type="submit" [disabled]="patientForm.invalid || admissionStateForm.invalid">Add patient</ion-button>
+  </form>
+  <ion-button expand="full" color="warning" (click)="dismiss()">Close</ion-button>
+</ion-content>
+

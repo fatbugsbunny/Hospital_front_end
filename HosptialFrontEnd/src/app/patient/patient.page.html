@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-float-left">Search for a patient</ion-title>
+    <ion-button class="ion-float-right ion-padding-horizontal" fill="outline" size="small" (click)="openAddPatientForm()">Add Patient</ion-button>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="handleInput($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" >
+  <ion-grid id="grid">
+    <ion-row>
+      <ion-col>Id</ion-col>
+      <ion-col>Name</ion-col>
+      <ion-col>Last name</ion-col>
+      <ion-col>Edit</ion-col>
+      <ion-col>Delete</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let patient of patients">
+      <ion-col>{{patient.id}}</ion-col>
+      <ion-col>{{patient.name}}</ion-col>
+      <ion-col>{{patient.lastName}}</ion-col>
+<!--      <ion-col><ion-button (click)="openChangeDepartmentForm()">{{patient.department}}</ion-button></ion-col>-->
+<!--      <ion-col><ion-button (click)="openAdmissionsPage()">Manage admissions</ion-button></ion-col>-->
+<!--      <ion-col><ion-button color="primary" (click)="openEditPatientForm(patient)">Edit</ion-button></ion-col>-->
+<!--      <ion-col><ion-button color="danger" (click)="openDeletePatientPopup(patient.id!)">Delete</ion-button></ion-col>-->
+    </ion-row>
+  </ion-grid>
+</ion-content>

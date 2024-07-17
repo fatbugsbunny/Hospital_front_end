@@ -33,7 +33,7 @@ export class DepartmentPage implements OnInit{
   data!: Department[];
   departments: Department[] = [];
 
-  constructor(public modalController: ModalController,  private router: Router
+  constructor(public modalController: ModalController
 , private departmentService: DepartmentService) {}
 
   ngOnInit(){

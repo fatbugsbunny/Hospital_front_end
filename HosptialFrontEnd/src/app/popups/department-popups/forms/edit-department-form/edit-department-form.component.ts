@@ -8,7 +8,7 @@ import {MatFormField} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatLabel} from "@angular/material/form-field";
 import {ModalController} from "@ionic/angular/standalone";
-import {ErrorHandlePopupComponent} from "../../../after-action-popup/error-handle-popup.component";
+import {ErrorHandlePopupComponent} from "../../../error-handle-popup/error-handle-popup.component";
 import {ModalHandler} from "src/app/ModalHandler";
 import {catchError} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";

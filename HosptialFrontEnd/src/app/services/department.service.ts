@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {catchError, Observable, throwError} from "rxjs";
-import {Department, Options, Patient} from "../types";
+import {Department} from "../types";
 
 @Injectable({
   providedIn: 'root'
