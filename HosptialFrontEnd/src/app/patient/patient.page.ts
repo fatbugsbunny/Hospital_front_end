@@ -14,6 +14,9 @@ import {
 import {Patient} from "../types";
 import {PatientService} from "../services/patient.service";
 import {AddPatientFormComponent} from "../popups/patient-popups/forms/add-patient-form/add-patient-form.component";
+import {
+  DeletePatientPopupComponent
+} from "../popups/patient-popups/delete-patient-popup/delete-patient-popup.component";
 
 @Component({
   selector: 'app-patient',
@@ -41,6 +44,16 @@ export class PatientPage implements OnInit {
   async openAddPatientForm(){
     const modal = await this.modalController.create({
       component: AddPatientFormComponent
+    })
+    return await modal.present();
+  }
+
+  async openDeletePatientPopup(id: number){
+    const modal = await this.modalController.create({
+      component: DeletePatientPopupComponent,
+      componentProps: {
+        id
+      }
     })
     return await modal.present();
   }

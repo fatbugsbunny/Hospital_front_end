@@ -33,7 +33,7 @@ export class AddDepartmentFormComponent  extends ModalHandler {
     this.departmentService.addDepartment(this.getFormData())
       .pipe(catchError((error: HttpErrorResponse) => this.handleError(error)))
       .subscribe(async response =>
-      { if(response){ this.router.navigate([this.router.url]).then(() => {
+      { if(!response){ this.router.navigate([this.router.url]).then(() => {
         window.location.reload()})}
       });
     this.dismiss();

@@ -22,7 +22,7 @@
         <ion-input type="text" formControlName="reason"></ion-input>
 
         <ion-label>Clinical data</ion-label>
-        <ion-input type="text" formControlName="clinicalData"></ion-input>
+        <ion-input type="text" [formControl]="clinicalData"></ion-input>
     </div>
     <ion-button expand="full" type="submit" [disabled]="patientForm.invalid || admissionStateForm.invalid">Add patient</ion-button>
   </form>

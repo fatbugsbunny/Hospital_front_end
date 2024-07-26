@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {ModalHandler} from "../../../../ModalHandler";
 import {PatientService} from "../../../../services/patient.service";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {catchError} from "rxjs";
+import {catchError, firstValueFrom, interval, map, switchMap} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
 import {IonicModule} from "@ionic/angular";
 import {DepartmentService} from "../../../../services/department.service";
-import {Department} from "../../../../types";
+import {ClinicalData, Department} from "../../../../types";
 import {CommonModule} from "@angular/common";
 
 @Component({
@@ -20,7 +20,7 @@ import {CommonModule} from "@angular/common";
     CommonModule
   ]
 })
-export class AddPatientFormComponent extends ModalHandler implements OnInit{
+export class AddPatientFormComponent extends ModalHandler implements OnInit {
   departments: Department[] = [];
 
   patientForm: FormGroup = new FormGroup({
@@ -30,28 +30,35 @@ export class AddPatientFormComponent extends ModalHandler implements OnInit{
   });
   admissionStateForm: FormGroup = new FormGroup({
     enteringDate: new FormControl(this.getCurrentFormattedDate()),
-    exitingDate: new FormControl(null ),
+    exitingDate: new FormControl(null),
     cause: new FormControl('', [Validators.required]),
     reason: new FormControl('', [Validators.required]),
     discharge: new FormControl(false),
-    clinicalData: new FormControl('', [Validators.required]),
+    patient: new FormControl(null),
   })
+
+  clinicalData: FormControl = new FormControl('', [Validators.required]);
   department: FormControl = new FormControl('', [Validators.required])
 
   constructor(private patientService: PatientService, private departmentService: DepartmentService) {
     super()
   }
 
-  ngOnInit() {
+    ngOnInit() {
     this.departmentService.getAllDepartments().subscribe(next => this.departments = next);
-    console.log(this.departments);
   }
 
-  addPatient() {
-    let id:number = 0;
-    this.patientService.addPatient(this.patientForm.value).pipe(catchError((error: HttpErrorResponse) => this.handleError(error))).subscribe(async response => id = response.id);
-    this.patientService.addAdmissionState(id, this.admissionStateForm.value).pipe(catchError((error: HttpErrorResponse) => this.handleError(error))).subscribe();
-    this.patientService.setDepartment(id, this.department.value).pipe(catchError((error: HttpErrorResponse) => this.handleError(error))).subscribe();
+  async addPatient() {
+    const addedPatient = await firstValueFrom(this.patientService.addPatient(this.patientForm.value).pipe(
+    catchError((error: HttpErrorResponse) => this.handleError(error))));
+
+    await firstValueFrom(this.patientService.addAdmissionState(addedPatient.id, this.admissionStateForm.value).pipe(
+      catchError((error: HttpErrorResponse) => this.handleError(error))));
+    this.patientService.setDepartment(addedPatient.id, this.department.value).pipe(
+      catchError((error: HttpErrorResponse) => this.handleError(error))).subscribe();
+     this.patientService.setClinicalData(addedPatient.id, {clinicalRecord: this.clinicalData.value}).pipe(
+      catchError((error: HttpErrorResponse) => this.handleError(error))).subscribe();
+     this.dismiss();
   }
 
   getCurrentFormattedDate(): string {

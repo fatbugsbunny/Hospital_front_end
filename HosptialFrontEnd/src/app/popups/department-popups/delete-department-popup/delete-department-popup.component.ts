@@ -19,22 +19,23 @@ import {Router} from "@angular/router";
     IonButton
   ]
 })
-export class DeleteDepartmentPopupComponent extends ModalHandler{
+export class DeleteDepartmentPopupComponent extends ModalHandler {
   @Input() id!: number;
 
   constructor(private router: Router,
-    private departmentService: DepartmentService,
+              private departmentService: DepartmentService,
   ) {
     super();
   }
 
-  deleteDepartment(id: number) {
-    this.departmentService.deleteDepartment(id).pipe(
-      catchError((errorResponse: HttpErrorResponse) => this.handleError(errorResponse)))
-      .subscribe(async response =>
-      { if(response){ this.router.navigate([this.router.url]).then(() => {
-      window.location.reload()})}
-      });
+  deleteDepartment() {
+    this.departmentService.deleteDepartment(this.id).pipe(catchError((errorResponse: HttpErrorResponse) => this.handleError(errorResponse))).subscribe(async response => {
+      if (!response) {
+        this.router.navigate([this.router.url]).then(() => {
+          window.location.reload()
+        })
+      }
+    });
     this.dismiss();
   }
 }
