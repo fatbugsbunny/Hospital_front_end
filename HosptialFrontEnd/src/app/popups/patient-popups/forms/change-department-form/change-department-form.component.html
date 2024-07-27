@@ -1,3 +1,9 @@
-<p>
-  change-department-form works!
-</p>
+<ion-card >
+  <ion-card-header>Choose a new department</ion-card-header>
+  <ion-select [formControl]="department" placeholder="Department" >
+    <ion-select-option *ngFor="let department of departments" [value]="department.id">{{ department.name }}
+    </ion-select-option>
+  </ion-select>
+  <ion-button (click)="changeDepartment()">Change</ion-button>
+  <ion-button color="warning" (click)="dismiss()">Cancel</ion-button>
+</ion-card>

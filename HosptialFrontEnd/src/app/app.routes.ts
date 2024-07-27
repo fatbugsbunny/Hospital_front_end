@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'department',
-    loadComponent: () => import('./department/department.page').then((m) => m.DepartmentPage),
+    loadComponent: () => import('./departments/departments.page').then((m) => m.DepartmentsPage),
   },
   {
     path: '',
@@ -12,6 +12,10 @@ export const routes: Routes = [
   },
   {
     path: 'patient',
-    loadComponent: () => import('./patient/patient.page').then( m => m.PatientPage)
+    loadComponent: () => import('./patients/patients.page').then(m => m.PatientsPage)
+  },
+  {
+    path: 'admissions/:patientId',
+    loadComponent: () => import('./admissions/admissions.page').then( m => m.AdmissionsPage)
   },
 ];

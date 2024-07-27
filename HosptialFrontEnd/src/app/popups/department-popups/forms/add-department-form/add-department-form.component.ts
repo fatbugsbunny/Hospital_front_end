@@ -25,7 +25,7 @@ export class AddDepartmentFormComponent  extends ModalHandler {
     name: new FormControl("", [Validators.required]),
   })
 
-  constructor(private router:Router, private departmentService: DepartmentService) {
+  constructor(private departmentService: DepartmentService) {
     super()
   }
 
@@ -33,8 +33,7 @@ export class AddDepartmentFormComponent  extends ModalHandler {
     this.departmentService.addDepartment(this.getFormData())
       .pipe(catchError((error: HttpErrorResponse) => this.handleError(error)))
       .subscribe(async response =>
-      { if(!response){ this.router.navigate([this.router.url]).then(() => {
-        window.location.reload()})}
+      { if(response){ this.refreshPage()}
       });
     this.dismiss();
   }

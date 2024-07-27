@@ -20,8 +20,8 @@ export interface Patient {
   name: string;
   lastName: string;
   birthDate: string;
-  department: Department;
-  admissionStates: AdmissionState[];
+  department?: Department;
+  admissionStates?: AdmissionState[];
 }
 
 export interface Department {

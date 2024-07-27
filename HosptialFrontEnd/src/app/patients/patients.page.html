@@ -14,6 +14,7 @@
       <ion-col>Id</ion-col>
       <ion-col>Name</ion-col>
       <ion-col>Last name</ion-col>
+      <ion-col>Department</ion-col>
       <ion-col>Manage admissions</ion-col>
       <ion-col>Edit</ion-col>
       <ion-col>Delete</ion-col>
@@ -22,8 +23,8 @@
       <ion-col>{{patient.id}}</ion-col>
       <ion-col>{{patient.name}}</ion-col>
       <ion-col>{{patient.lastName}}</ion-col>
-<!--      <ion-col><ion-button (click)="openChangeDepartmentForm()">{{patient.department}}</ion-button></ion-col>-->
-      <ion-col><ion-button (click)="openAdmissionsPage()">Manage admissions</ion-button></ion-col>
+      <ion-col><ion-button color="dark" fill="clear" (click)="openChangeDepartmentForm(patient.id!)">{{patient.department?.name}}</ion-button></ion-col>
+      <ion-col><ion-button (click)="openAdmissionsPage(patient.id!)">Manage admissions</ion-button></ion-col>
       <ion-col><ion-button color="primary" (click)="openEditPatientForm(patient)">Edit</ion-button></ion-col>
       <ion-col><ion-button color="danger" (click)="openDeletePatientPopup(patient.id!)">Delete</ion-button></ion-col>
     </ion-row>

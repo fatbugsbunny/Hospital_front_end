@@ -1,3 +1,21 @@
-<p>
-  admit-patient-popup works!
-</p>
+<ion-content>
+  <form (submit)="admitPatient()" [formGroup]="admissionStateForm">
+    <ion-label>Cause</ion-label>
+    <ion-input type="text" formControlName="cause"></ion-input>
+
+    <ion-label>Reason</ion-label>
+    <ion-input type="text" formControlName="reason"></ion-input>
+
+    <ion-label>Clinical data</ion-label>
+    <ion-input type="text" [formControl]="clinicalData"></ion-input>
+
+    <ion-label>Department</ion-label>
+    <ion-select [formControl]="department">
+      <ion-select-option *ngFor="let department of departments" [value]="department.id">{{ department.name }}
+      </ion-select-option>
+    </ion-select>
+
+    <ion-button expand="full" type="submit" [disabled]="admissionStateForm.invalid">Admit</ion-button>
+  </form>
+  <ion-button expand="full" color="warning" (click)="dismiss()">Close</ion-button>
+</ion-content>

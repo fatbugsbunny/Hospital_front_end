@@ -23,13 +23,13 @@ import {
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-department',
-  templateUrl: 'department.page.html',
-  styleUrls: ['department.page.scss'],
+  selector: 'app-departments',
+  templateUrl: 'departments.page.html',
+  styleUrls: ['departments.page.scss'],
   standalone: true,
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonGrid, IonRow, IonCol, CommonModule, IonButton, ReactiveFormsModule, IonModal, IonButtons, IonInput, FormsModule, IonSearchbar],
 })
-export class DepartmentPage implements OnInit{
+export class DepartmentsPage implements OnInit{
   data!: Department[];
   departments: Department[] = [];
 

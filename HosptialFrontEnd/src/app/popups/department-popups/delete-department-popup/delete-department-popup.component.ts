@@ -22,7 +22,7 @@ import {Router} from "@angular/router";
 export class DeleteDepartmentPopupComponent extends ModalHandler {
   @Input() id!: number;
 
-  constructor(private router: Router,
+  constructor(
               private departmentService: DepartmentService,
   ) {
     super();
@@ -30,10 +30,8 @@ export class DeleteDepartmentPopupComponent extends ModalHandler {
 
   deleteDepartment() {
     this.departmentService.deleteDepartment(this.id).pipe(catchError((errorResponse: HttpErrorResponse) => this.handleError(errorResponse))).subscribe(async response => {
-      if (!response) {
-        this.router.navigate([this.router.url]).then(() => {
-          window.location.reload()
-        })
+      if (response) {
+        this.refreshPage();
       }
     });
     this.dismiss();

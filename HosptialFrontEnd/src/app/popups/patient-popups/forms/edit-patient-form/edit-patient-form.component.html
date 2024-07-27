@@ -1,3 +1,15 @@
-<p>
-  edit-patient-form works!
-</p>
+<ion-content>
+  <form [formGroup]="patientForm" (submit)="updatePatient()">
+    <ion-label position="floating">Name</ion-label>
+    <ion-input formControlName="name"></ion-input>
+
+    <ion-label position="floating">Last name</ion-label>
+    <ion-input formControlName="lastName"></ion-input>
+
+    <ion-label position="floating">Birthday</ion-label>
+    <ion-input formControlName="birthDate" type="date"></ion-input>
+
+    <ion-button expand="full" type="submit" [disabled]="patientForm.invalid">Edit patient</ion-button>
+  </form>
+  <ion-button expand="full" color="warning" (click)="dismiss()">Close</ion-button>
+</ion-content>

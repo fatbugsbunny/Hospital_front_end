@@ -18,19 +18,24 @@ import {
   DeletePatientPopupComponent
 } from "../popups/patient-popups/delete-patient-popup/delete-patient-popup.component";
 import {EditPatientFormComponent} from "../popups/patient-popups/forms/edit-patient-form/edit-patient-form.component";
+import {Router, RouterLink} from "@angular/router";
+import {HttpParams} from "@angular/common/http";
+import {
+  ChangeDepartmentFormComponent
+} from "../popups/patient-popups/forms/change-department-form/change-department-form.component";
 
 @Component({
-  selector: 'app-patient',
-  templateUrl: './patient.page.html',
-  styleUrls: ['./patient.page.scss'],
+  selector: 'app-patients',
+  templateUrl: './patients.page.html',
+  styleUrls: ['./patients.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCol, IonGrid, IonRow, IonSearchbar]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCol, IonGrid, IonRow, IonSearchbar, RouterLink]
 })
-export class PatientPage implements OnInit {
+export class PatientsPage implements OnInit {
   data!: Patient[];
   patients: Patient[] = [];
 
-  constructor(public modalController: ModalController, private patientService: PatientService) { }
+  constructor(private router: Router, public modalController: ModalController, private patientService: PatientService) { }
 
   ngOnInit() {
     this.patientService.getAllPatients().subscribe(patients => {this.patients = patients; this.data = patients});
@@ -67,5 +72,19 @@ export class PatientPage implements OnInit {
       }
     })
     return await modal.present();
+  }
+
+  async openChangeDepartmentForm(patientId: number){
+    const modal = await this.modalController.create({
+      component: ChangeDepartmentFormComponent,
+      componentProps: {
+        patientId
+      }
+    })
+    return await modal.present();
+  }
+
+  openAdmissionsPage(patientId: number){
+    this.router.navigate(['/admissions', patientId]);
   }
 }

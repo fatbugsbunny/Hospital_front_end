@@ -1,13 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>admissions</ion-title>
+    <ion-title class="ion-float-left">Search admissions based on date</ion-title>
+    <ion-button class="ion-float-right ion-padding-horizontal" fill="outline" size="small"
+                (click)="openAdmitPatientForm()">Admit patient
+    </ion-button>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="handleInput($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">admissions</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>Entering date</ion-col>
+      <ion-col>Exiting date</ion-col>
+      <ion-col>Cause</ion-col>
+      <ion-col>Reason</ion-col>
+      <ion-col>Data</ion-col>
+      <ion-col>Discharge</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let admission of admissions">
+      <ion-col>{{ admission.enteringDate }}</ion-col>
+      <ion-col>
+        <div *ngIf="admission.exitingDate; else hasntExited">
+          {{ admission.exitingDate }}
+        </div>
+        <ng-template #hasntExited>-</ng-template>
+      </ion-col>
+      <ion-col>{{ admission.cause }}</ion-col>
+      <ion-col>{{ admission.reason }}</ion-col>
+      <ion-col>
+        <div *ngIf="admission.clinicalData; else noDataAvailable">
+          {{ admission.clinicalData.clinicalRecord }}
+        </div>
+        <ng-template #noDataAvailable>No clinical data available</ng-template>
+      </ion-col>
+      <ion-col>
+        <div *ngIf="!admission.exitingDate; else discharged">
+          <ion-button color="danger" (click)="openDischargePopup(patientId)">Discharge</ion-button>
+        </div>
+        <ng-template #discharged>Discharged</ng-template>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

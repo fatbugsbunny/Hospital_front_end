@@ -1,3 +1,15 @@
-<p>
-  discharge-patient-popup works!
-</p>
+<ion-card>
+  <ion-card-header>Would you like to discharge this patient ?</ion-card-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col>Select a reason</ion-col>
+      <ion-col>
+        <ion-select [formControl]="reasonForm" placeholder="Reason">
+          <ion-select-option *ngFor="let reason of reasons">{{ reason }}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button color="danger" (click)="dischargePatient()">Discharge</ion-button>
+  <ion-button color="warning" (click)="dismiss()">Cancel</ion-button>
+</ion-card>

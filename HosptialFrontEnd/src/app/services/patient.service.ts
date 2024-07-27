@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {AdmissionState, ClinicalData, Patient} from "../types";
 import {Observable} from "rxjs";
 
@@ -36,6 +36,19 @@ export class PatientService {
     return this.httpClient.put<ClinicalData>(`${this.apiUrl}/${patientId}/clinicalData`, clinicalData);
   }
 
+   updatePatient(id: number, patient: Patient): Observable<any> {
+    return this.httpClient.put<Patient>(`${this.apiUrl}/${id}`, patient);
+  }
+
+  getAllAdmissionStates(id: number): Observable<AdmissionState[]>{
+    return this.httpClient.get<AdmissionState[]>(`${this.apiUrl}/${id}/allAdmissionStates`)
+  }
+
+  dischargePatient(id: number, reason: string): Observable<any>{
+    const params = {params: new HttpParams().set("reason", reason)}
+
+    return this.httpClient.put(`${this.apiUrl}/${id}/discharge`, null, params);
+  }
 
 
 }

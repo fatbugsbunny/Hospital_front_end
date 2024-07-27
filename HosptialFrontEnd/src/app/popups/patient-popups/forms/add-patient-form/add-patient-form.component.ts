@@ -24,21 +24,21 @@ export class AddPatientFormComponent extends ModalHandler implements OnInit {
   departments: Department[] = [];
 
   patientForm: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    birthDate: new FormControl('', [Validators.required]),
+    name: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    birthDate: new FormControl('', Validators.required),
   });
+
   admissionStateForm: FormGroup = new FormGroup({
     enteringDate: new FormControl(this.getCurrentFormattedDate()),
     exitingDate: new FormControl(null),
-    cause: new FormControl('', [Validators.required]),
-    reason: new FormControl('', [Validators.required]),
+    cause: new FormControl('', Validators.required),
+    reason: new FormControl('', Validators.required),
     discharge: new FormControl(false),
-    patient: new FormControl(null),
   })
 
-  clinicalData: FormControl = new FormControl('', [Validators.required]);
-  department: FormControl = new FormControl('', [Validators.required])
+  clinicalData: FormControl = new FormControl('', Validators.required);
+  department: FormControl = new FormControl('', Validators.required);
 
   constructor(private patientService: PatientService, private departmentService: DepartmentService) {
     super()
@@ -59,6 +59,7 @@ export class AddPatientFormComponent extends ModalHandler implements OnInit {
      this.patientService.setClinicalData(addedPatient.id, {clinicalRecord: this.clinicalData.value}).pipe(
       catchError((error: HttpErrorResponse) => this.handleError(error))).subscribe();
      this.dismiss();
+     this.refreshPage()
   }
 
   getCurrentFormattedDate(): string {

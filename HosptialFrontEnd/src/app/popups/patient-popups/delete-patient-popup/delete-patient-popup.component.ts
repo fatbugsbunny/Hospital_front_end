@@ -20,14 +20,14 @@ import {IonButton, IonCard, IonCardHeader} from "@ionic/angular/standalone";
 export class DeletePatientPopupComponent extends ModalHandler {
   @Input() id!: number;
 
-  constructor(private router: Router, private patientService: PatientService) {
+  constructor(private patientService: PatientService) {
     super();
   }
 
   deletePatient() {
     this.patientService.deletePatient(this.id).pipe(catchError((errorResponse: HttpErrorResponse) => this.handleError(errorResponse))).subscribe(async response => {
-      if (!response) {
-        this.router.navigate([this.router.url]).then(() => window.location.reload())
+      if (response) {
+        this.refreshPage()
       }
     });
     this.dismiss();

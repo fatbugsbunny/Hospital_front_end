@@ -33,8 +33,8 @@ export class EditDepartmentFormComponent extends ModalHandler implements OnInit 
   @Input() department!: Department;
 
   editDepartmentForm = new FormGroup({
-    code: new FormControl("", [Validators.required]),
-    name: new FormControl("", [Validators.required]),
+    code: new FormControl("", Validators.required),
+    name: new FormControl("", Validators.required),
   });
 
   ngOnInit() {
@@ -42,16 +42,15 @@ export class EditDepartmentFormComponent extends ModalHandler implements OnInit 
     this.editDepartmentForm.controls.code.setValue(this.department.code);
   }
 
-  constructor(private router:Router,private departmentService: DepartmentService) {
+  constructor(private departmentService: DepartmentService) {
     super();
   }
 
   editDepartment() {
     this.departmentService.editDepartment(this.department.id!, this.getFormData())
       .pipe(catchError((errorResponse: HttpErrorResponse) => this.handleError(errorResponse)))
-      .subscribe(async response =>
-      { if(response){ this.router.navigate([this.router.url]).then(() => {
-        window.location.reload()})}
+      .subscribe(async response => {
+        if (response) this.refreshPage();
       });
     this.dismiss();
   }
