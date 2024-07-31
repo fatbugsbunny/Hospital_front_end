@@ -32,8 +32,8 @@ export class PatientService {
     return this.httpClient.put<Patient>(`${this.apiUrl}/${patientId}/department/${departmentId}`, null);
   }
 
-  setClinicalData(patientId: number, clinicalData: ClinicalData): Observable<any> {
-    return this.httpClient.put<ClinicalData>(`${this.apiUrl}/${patientId}/clinicalData`, clinicalData);
+  setClinicalData(patientId: number, clinicalData: string): Observable<any> {
+    return this.httpClient.put<ClinicalData>(`${this.apiUrl}/${patientId}/clinicalData`, {clinicalRecord: clinicalData});
   }
 
    updatePatient(id: number, patient: Patient): Observable<any> {

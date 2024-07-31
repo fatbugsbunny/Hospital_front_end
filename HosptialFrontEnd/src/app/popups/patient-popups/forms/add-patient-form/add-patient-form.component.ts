@@ -56,7 +56,7 @@ export class AddPatientFormComponent extends ModalHandler implements OnInit {
       catchError((error: HttpErrorResponse) => this.handleError(error))));
     this.patientService.setDepartment(addedPatient.id, this.department.value).pipe(
       catchError((error: HttpErrorResponse) => this.handleError(error))).subscribe();
-     this.patientService.setClinicalData(addedPatient.id, {clinicalRecord: this.clinicalData.value}).pipe(
+     this.patientService.setClinicalData(addedPatient.id, this.clinicalData.value).pipe(
       catchError((error: HttpErrorResponse) => this.handleError(error))).subscribe();
      this.dismiss();
      this.refreshPage()

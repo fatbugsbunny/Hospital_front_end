@@ -17,8 +17,11 @@ import {
   DischargePatientPopupComponent
 } from "../popups/patient-popups/discharge-patient-popup/discharge-patient-popup.component";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AdmitPatientPopupComponent} from "../popups/patient-popups/admit-patient-popup/admit-patient-popup.component";
+import {AdmitPatientFormComponent} from "../popups/patient-popups/forms/admit-patient-form/admit-patient-form.component";
 import {firstValueFrom} from "rxjs";
+import {
+  ChangeClinicalDataFormComponent
+} from "../popups/patient-popups/forms/change-clinical-data-form/change-clinical-data-form.component";
 
 @Component({
   selector: 'app-admissions',
@@ -46,11 +49,11 @@ export class AdmissionsPage implements OnInit {
     console.log(this.admissions);
   }
 
-  async openDischargePopup(patientId: number){
+  async openDischargePopup(){
     const modal = await this.modalController.create({
       component: DischargePatientPopupComponent,
       componentProps: {
-        patientId,
+        patientId: this.patientId,
       }
     })
     return await modal.present();
@@ -58,7 +61,17 @@ export class AdmissionsPage implements OnInit {
 
   async openAdmitPatientForm(){
     const modal = await this.modalController.create({
-      component: AdmitPatientPopupComponent,
+      component: AdmitPatientFormComponent,
+      componentProps: {
+        patientId: this.patientId,
+      }
+    })
+    return await modal.present();
+  }
+
+  async openChangeClinicalDataPopup() {
+    const modal = await this.modalController.create({
+      component: ChangeClinicalDataFormComponent,
       componentProps: {
         patientId: this.patientId,
       }
@@ -71,4 +84,5 @@ export class AdmissionsPage implements OnInit {
     const query = event.target.value.toLowerCase();
     this.admissions = this.admissionsData.filter((d) => d.enteringDate.toLowerCase().indexOf(query) > -1);
   }
+
 }

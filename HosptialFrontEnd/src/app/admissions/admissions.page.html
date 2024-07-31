@@ -32,13 +32,13 @@
       <ion-col>{{ admission.reason }}</ion-col>
       <ion-col>
         <div *ngIf="admission.clinicalData; else noDataAvailable">
-          {{ admission.clinicalData.clinicalRecord }}
+          <ion-button color="dark" fill="clear"  (click)="openChangeClinicalDataPopup()" style="text-transform:none!important;">{{ admission.clinicalData.clinicalRecord }}</ion-button>
         </div>
         <ng-template #noDataAvailable>No clinical data available</ng-template>
       </ion-col>
       <ion-col>
         <div *ngIf="!admission.exitingDate; else discharged">
-          <ion-button color="danger" (click)="openDischargePopup(patientId)">Discharge</ion-button>
+          <ion-button color="danger" (click)="openDischargePopup()">Discharge</ion-button>
         </div>
         <ng-template #discharged>Discharged</ng-template>
       </ion-col>

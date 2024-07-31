@@ -50,6 +50,7 @@ export class EditPatientFormComponent extends ModalHandler implements OnInit {
       name: formValue.name ?? '',
       lastName: formValue.lastName ?? '',
       birthDate: formValue.birthDate ?? '',
+
     };
   }
 }

@@ -1,0 +1,6 @@
+<ion-card >
+  <ion-card-header>Set new clinical data</ion-card-header>
+  <ion-input type="text" placeholder="Data" [formControl]="dataFormControl"></ion-input>
+  <ion-button (click)="changeClinicalData()">Change</ion-button>
+  <ion-button color="warning" (click)="dismiss()">Cancel</ion-button>
+</ion-card>
